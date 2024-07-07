@@ -15,12 +15,12 @@ function App() {
       <div className="App">
         <Navbar />
         <Routes>
-          <Route path="/" element={<Homepage />} />
-          <Route path="/create-join-team" element={<CreateJoinTeam />} />
-          <Route path="/analytics" element={<Analytics />} />
-          <Route path="/search-matches" element={<SearchMatches />} />
-          <Route path="/create-tournament" element={<CreateTournament />} />
-          <Route path="/contact" element={<Contact />} />
+          <Route path="/elite-match-project" element={<Homepage />} />
+          <Route path="/elite-match-project/create-join-team" element={<CreateJoinTeam />} />
+          <Route path="/elite-match-project/analytics" element={<Analytics />} />
+          <Route path="/elite-match-project/search-matches" element={<SearchMatches />} />
+          <Route path="/elite-match-project/create-tournament" element={<CreateTournament />} />
+          <Route path="/elite-match-project/contact" element={<Contact />} />
         </Routes>
       </div>
     </Router>
