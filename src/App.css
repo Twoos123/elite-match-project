@@ -1,38 +1,135 @@
-.App {
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+nav {
+  background-color: #333;
+  color: #fff;
+  padding: 1em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%; /* Extend navbar to full width */
+}
+
+nav h1 {
+  margin: 0;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+}
+
+nav ul li {
+  margin-left: 1em;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.1em; /* Increase text size of links */
+}
+
+.header {
+  text-align: center;
+  padding: 2em;
+}
+
+.brand {
+  color: #4CAF50; /* Green color for brand */
+}
+
+.features {
+  display: flex;
+  justify-content: space-around;
+  padding: 2em;
+}
+
+.feature {
+  flex: 1;
+  padding: 20px;
+  margin: 0 10px;
+  background-color: #f2f2f2;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.icon {
+  font-size: 36px;
+  margin-bottom: 10px;
+  color: #4CAF50; /* Green color for icons */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.feature h3 {
+  margin-bottom: 10px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.feature p {
+  color: #666;
 }
 
-.App-link {
-  color: #61dafb;
+.images-section {
+  text-align: center;
+  background-color: #fff;
+  padding: 2em;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.search-section {
+  background-color: #f2f2f2;
+  padding: 2em;
+  text-align: center;
+}
+
+.search-section form {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.search-section fieldset {
+  border: none;
+}
+
+.search-section legend {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.search-section label {
+  display: block;
+  margin-bottom: 0.5em;
+}
+
+.search-section button {
+  padding: 0.5em 2em;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.search-section button:hover {
+  background-color: #555;
+}
+
+footer {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 1em;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }

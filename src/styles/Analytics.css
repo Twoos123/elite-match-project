@@ -1,0 +1,51 @@
+.analytics {
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+    text-align: center;
+  }
+  
+  .profile-section {
+    margin-bottom: 20px;
+  }
+  
+  .profile-picture {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  .statistics-section {
+    margin-bottom: 20px;
+  }
+  
+  .recent-performances-section,
+  .last-five-matches-section {
+    margin-bottom: 50px;
+  }
+  
+  .back-button {
+    margin: 0 auto; 
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  .back-button:hover {
+    background-color: #555;
+  }
+  
+  .recent-performances-section ul,
+  .last-five-matches-section ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  

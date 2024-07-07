@@ -1,0 +1,71 @@
+.create-join-team {
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+    text-align: center;
+  }
+  
+  .create-join-team h1 {
+    margin-bottom: 20px;
+  }
+  
+  .create-join-team div {
+    margin-bottom: 20px;
+  }
+  
+  .create-join-team input, .create-join-team select {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    font-size: 16px;
+  }
+  
+  .create-join-team button {
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    margin-right: 10px;
+  }
+  
+  .create-join-team button:hover {
+    background-color: #555;
+  }
+  
+  .team-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .team-card {
+    background-color: #f2f2f2;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    margin: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    max-width: 300px;
+  }
+  
+  .team-card:hover {
+    background-color: #e0e0e0;
+  }
+  
+  .team-card.selected {
+    background-color: #4CAF50;
+    color: #fff;
+    border: 2px solid #4CAF50; /* Add a border to indicate selection */
+  }
+  
+  .team-card.selected:hover {
+    background-color: #45a049;
+  }
+
+  
