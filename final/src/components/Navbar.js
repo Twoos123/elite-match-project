@@ -16,7 +16,7 @@ function Navbar() {
             <li><Link to="/elite-match-project/analytics">Analytics</Link></li>
             <li><Link to="/elite-match-project/search-matches">Search Matches</Link></li>
             <li><Link to="/elite-match-project/create-tournament">Create Tournament</Link></li>
-            <li><Link to="/elite-match-project/contact">Contact</Link></li>
+            <li><Link to="/elite-match-project/faq">FAQ</Link></li>
           </ul>
         </div>
       </div>
