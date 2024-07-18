@@ -36,4 +36,10 @@
     text-decoration: none;
     font-size: 1.1em;
   }
+
+  .brand h1 {
+  font-size: 1.5em;
+  margin: 0;
+}
+
   

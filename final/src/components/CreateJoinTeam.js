@@ -1,131 +1,191 @@
 import React, { useState } from 'react';
-import '../styles/CreateJoinTeam.css'; // Import CSS for CreateJoinTeam component
+import '../styles/CreateJoinTeam.css'; 
 
 function CreateJoinTeam() {
   const [teamName, setTeamName] = useState('');
-  const [skillLevel, setSkillLevel] = useState('');
-  const [game, setGame] = useState('');
-  const [region, setRegion] = useState('');
-  const [searchTerm, setSearchTerm] = useState('');
-  const [selectedGame, setSelectedGame] = useState('');
-  const [selectedSkillLevel, setSelectedSkillLevel] = useState('');
-  const [selectedRegion, setSelectedRegion] = useState('');
+  const [games, setGames] = useState([]);
+  const [skillLevels, setSkillLevels] = useState([]);
+  const [regions, setRegions] = useState([]);
+  const [selectedTeam, setSelectedTeam] = useState(null); 
   const [teams, setTeams] = useState([
-    { id: 1, name: 'Team A', game: 'CS2', skillLevel: 'Pro', region: 'NA' },
-    { id: 2, name: 'Team B', game: 'Valorant', skillLevel: 'Amateur', region: 'EU' },
-    { id: 3, name: 'Team C', game: 'Overwatch 2', skillLevel: 'Semi-Pro', region: 'SA' },
-    { id: 4, name: 'Team D', game: 'League of Legends', skillLevel: 'Beginner', region: 'OCE' },
+    { id: 1, name: 'Team A', game: 'CS2', skillLevel: 'Pro', region: 'NA', joined: false },
+    { id: 2, name: 'Team B', game: 'Valorant', skillLevel: 'Amateur', region: 'EU', joined: false },
+    { id: 3, name: 'Team C', game: 'Overwatch 2', skillLevel: 'Semi-Pro', region: 'Asia', joined: false },
+    { id: 4, name: 'Team D', game: 'League of Legends', skillLevel: 'Beginner', region: 'NA', joined: false },
   ]);
-  const [selectedTeam, setSelectedTeam] = useState(null); // State to track selected team
+
+  const [validationErrors, setValidationErrors] = useState({});
 
   const handleCreateTeam = () => {
-    alert(`Team ${teamName} created with skill level ${skillLevel}, playing ${game} in ${region}`);
-  };
-
-  const handleJoinTeam = () => {
-    if (selectedTeam) {
-      alert(`Joined team: ${selectedTeam.name}`);
-    } else {
-      alert('Please select a team to join.');
+    const errors = validateForm();
+    if (Object.keys(errors).length > 0) {
+      setValidationErrors(errors);
+      return;
     }
+
+    const newTeam = {
+      id: teams.length + 1,
+      name: teamName,
+      game: games.join(', '),
+      skillLevel: skillLevels.join(', '),
+      region: regions.join(', '),
+      joined: false,
+    };
+
+    setTeams([...teams, newTeam]);
+
+    setTeamName('');
+    setGames([]);
+    setSkillLevels([]);
+    setRegions([]);
+
+    alert(`Team ${teamName} created with skill level ${skillLevels.join(', ')}, playing ${games.join(', ')} in ${regions.join(', ')}`);
   };
 
-  const handleSearch = () => {
-    const filteredTeams = teams.filter(team =>
-      team.game.includes(selectedGame) &&
-      team.skillLevel.includes(selectedSkillLevel) &&
-      team.region.includes(selectedRegion)
+  const validateForm = () => {
+    const errors = {};
+    if (!teamName.trim()) {
+      errors.teamName = 'Team name is required';
+    }
+    if (games.length === 0) {
+      errors.games = 'At least one game must be selected';
+    }
+    if (skillLevels.length === 0) {
+      errors.skillLevels = 'At least one skill level must be selected';
+    }
+    if (regions.length === 0) {
+      errors.regions = 'At least one region must be selected';
+    }
+    return errors;
+  };
+
+  const handleJoinToggle = (teamId) => {
+    const updatedTeams = teams.map(team =>
+      team.id === teamId ? { ...team, joined: !team.joined } : team
     );
-    console.log(filteredTeams);
-    // Perform actual search or display results
-    alert('Searching for teams with selected filters');
+    setTeams(updatedTeams);
+
+    if (selectedTeam && selectedTeam.id === teamId) {
+      setSelectedTeam(updatedTeams.find(team => team.id === teamId));
+    }
   };
 
   const selectTeam = (team) => {
     setSelectedTeam(team);
   };
 
-  const skillLevels = ['Beginner', 'Amateur', 'Semi-Pro', 'Pro'];
-  const games = ['CS2', 'Valorant', 'Overwatch 2', 'League of Legends'];
-  const regions = ['NA', 'SA', 'EU', 'OCE'];
+  const deleteTeam = (teamId) => {
+    const updatedTeams = teams.filter(team => team.id !== teamId);
+    setTeams(updatedTeams);
+
+    if (selectedTeam && selectedTeam.id === teamId) {
+      setSelectedTeam(null);
+    }
+
+    alert(`Team ${teamId} deleted successfully.`);
+  };
+
+  const handleGameChange = (game) => {
+    if (games.includes(game)) {
+      setGames(games.filter(g => g !== game));
+    } else {
+      setGames([...games, game]);
+    }
+  };
+
+  const handleSkillLevelChange = (level) => {
+    if (skillLevels.includes(level)) {
+      setSkillLevels(skillLevels.filter(l => l !== level));
+    } else {
+      setSkillLevels([...skillLevels, level]);
+    }
+  };
+
+  const handleRegionChange = (region) => {
+    if (regions.includes(region)) {
+      setRegions(regions.filter(r => r !== region));
+    } else {
+      setRegions([...regions, region]);
+    }
+  };
+
+  const skillLevelsOptions = ['Beginner', 'Amateur', 'Semi-Pro', 'Pro'];
+  const gamesOptions = ['CS2', 'Valorant', 'Overwatch 2', 'League of Legends'];
+  const regionsOptions = ['NA', 'Asia', 'EU'];
 
   return (
     <div className="create-join-team">
-      <h1>Create or Join a Team</h1>
-      
-      <div>
-        <h2>Create a Team</h2>
+      <h2>Create or Join a Team</h2>
+
+      <div className="input-container">
         <input
           type="text"
           value={teamName}
           onChange={(e) => setTeamName(e.target.value)}
           placeholder="Enter team name"
         />
-        <label>Skill Level:</label>
-        <select value={skillLevel} onChange={(e) => setSkillLevel(e.target.value)}>
-          <option value="">Select skill level</option>
-          {skillLevels.map((level, index) => (
-            <option key={index} value={level}>{level}</option>
-          ))}
-        </select>
-        <label>Game:</label>
-        <select value={game} onChange={(e) => setGame(e.target.value)}>
-          <option value="">Select game</option>
-          {games.map((game, index) => (
-            <option key={index} value={game}>{game}</option>
-          ))}
-        </select>
-        <label>Region:</label>
-        <select value={region} onChange={(e) => setRegion(e.target.value)}>
-          <option value="">Select region</option>
-          {regions.map((region, index) => (
-            <option key={index} value={region}>{region}</option>
-          ))}
-        </select>
+        {validationErrors.teamName && <p className="error">{validationErrors.teamName}</p>}
+      </div>
+
+      <div className="games-container">
+        <label>Games:</label>
+        {gamesOptions.map((game, index) => (
+          <label key={index}>
+            <input
+              type="checkbox"
+              checked={games.includes(game)}
+              onChange={() => handleGameChange(game)}
+            /> {game}
+          </label>
+        ))}
+        {validationErrors.games && <p className="error">{validationErrors.games}</p>}
+      </div>
+
+      <div className="skills-container">
+        <label>Skill Levels:</label>
+        {skillLevelsOptions.map((level, index) => (
+          <label key={index}>
+            <input
+              type="checkbox"
+              checked={skillLevels.includes(level)}
+              onChange={() => handleSkillLevelChange(level)}
+            /> {level}
+          </label>
+        ))}
+        {validationErrors.skillLevels && <p className="error">{validationErrors.skillLevels}</p>}
+      </div>
+
+      <div className="regions-container">
+        <label>Regions:</label>
+        {regionsOptions.map((region, index) => (
+          <label key={index}>
+            <input
+              type="checkbox"
+              checked={regions.includes(region)}
+              onChange={() => handleRegionChange(region)}
+            /> {region}
+          </label>
+        ))}
+        {validationErrors.regions && <p className="error">{validationErrors.regions}</p>}
+      </div>
+
+      <div className="button-container">
         <button onClick={handleCreateTeam}>Create Team</button>
       </div>
 
-      <div>
-        <h2>Join a Team</h2>
-        <input
-          type="text"
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          placeholder="Enter team name to search"
-        />
-        <label>Game:</label>
-        <select value={selectedGame} onChange={(e) => setSelectedGame(e.target.value)}>
-          <option value="">Select game</option>
-          {games.map((game, index) => (
-            <option key={index} value={game}>{game}</option>
-          ))}
-        </select>
-        <label>Skill Level:</label>
-        <select value={selectedSkillLevel} onChange={(e) => setSelectedSkillLevel(e.target.value)}>
-          <option value="">Select skill level</option>
-          {skillLevels.map((level, index) => (
-            <option key={index} value={level}>{level}</option>
-          ))}
-        </select>
-        <label>Region:</label>
-        <select value={selectedRegion} onChange={(e) => setSelectedRegion(e.target.value)}>
-          <option value="">Select region</option>
-          {regions.map((region, index) => (
-            <option key={index} value={region}>{region}</option>
-          ))}
-        </select>
-        <button onClick={handleSearch}>Search Teams</button>
-        <button onClick={handleJoinTeam}>Join Team</button>
-      </div>
-
       <div className="team-list">
-        <h2>Available Teams</h2>
         {teams.map(team => (
           <div key={team.id} className={`team-card ${selectedTeam && selectedTeam.id === team.id ? 'selected' : ''}`} onClick={() => selectTeam(team)}>
             <h3>{team.name}</h3>
-            <p>Game: {team.game}</p>
-            <p>Skill Level: {team.skillLevel}</p>
-            <p>Region: {team.region}</p>
+            <p>Games: {team.game}</p>
+            <p>Skill Levels: {team.skillLevel}</p>
+            <p>Regions: {team.region}</p>
+            {team.joined ? (
+              <button onClick={() => handleJoinToggle(team.id)}>Leave</button>
+            ) : (
+              <button onClick={() => handleJoinToggle(team.id)}>Join</button>
+            )}
+            <button onClick={() => deleteTeam(team.id)}>Delete</button>
           </div>
         ))}
       </div>

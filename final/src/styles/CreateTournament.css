@@ -1,6 +1,6 @@
 .container.create-tournament {
     max-width: 600px;
-    margin: 20px auto; /* Centered with margin */
+    margin: 20px auto;
     padding: 20px;
     background-color: #f4f4f4;
     border-radius: 8px;
@@ -15,12 +15,12 @@
   .create-tournament .form-container {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centering items */
+    align-items: center;
   }
   
   .create-tournament input {
-    width: 75%; /* Adjusting width */
-    max-width: 300px; /* Maximum width */
+    width: 75%; 
+    max-width: 300px;
     margin-bottom: 10px;
     padding: 10px;
     font-size: 16px;
@@ -32,7 +32,7 @@
     color: #fff;
     border: none;
     cursor: pointer;
-    margin-top: 10px; /* Adding margin */
+    margin-top: 10px; 
   }
   
   .create-tournament button:hover {

@@ -1,51 +1,78 @@
 .analytics {
-    padding: 20px;
-    background-color: #f4f4f4;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin: 20px;
-    text-align: center;
-  }
-  
-  .profile-section {
-    margin-bottom: 20px;
-  }
-  
-  .profile-picture {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    object-fit: cover;
-  }
-  
-  .statistics-section {
-    margin-bottom: 20px;
-  }
-  
-  .recent-performances-section,
-  .last-five-matches-section {
-    margin-bottom: 50px;
-  }
-  
-  .back-button {
-    margin: 0 auto; 
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: #333;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    border-radius: 4px;
-  }
-  
-  .back-button:hover {
-    background-color: #555;
-  }
-  
-  .recent-performances-section ul,
-  .last-five-matches-section ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  
+  padding: 20px;
+  background-color: #f4f4f4;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 20px;
+  text-align: center;
+}
+
+.profile-section {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile-picture {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.statistics-section {
+  margin-bottom: 20px;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.stat-item {
+  background: #f0f0f0;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.recent-performances-section,
+.last-five-matches-section {
+  margin-bottom: 20px;
+}
+
+.recent-performances-section ul,
+.last-five-matches-section ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.recent-performances-section li,
+.last-five-matches-section li {
+  background: #f9f9f9;
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.back-button {
+  display: block;
+  margin: 20px auto;
+  text-align: center;
+  padding: 10px 20px;
+  background: #333;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.back-button:hover {
+  background: #555;
+}
