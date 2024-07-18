@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import '../styles/SearchMatches.css';
 
 function SearchMatches() {
-  const initialMatches = [
+  const initialMatches = useMemo(() => [
     { id: 1, game: 'CS2', skillLevel: 'Pro', matchType: 'Ranked', region: 'NA' },
     { id: 2, game: 'Valorant', skillLevel: 'Semi-Pro', matchType: 'Casual', region: 'EU' },
     { id: 3, game: 'Overwatch 2', skillLevel: 'Beginner', matchType: 'Custom', region: 'Asia' },
@@ -23,7 +23,7 @@ function SearchMatches() {
     { id: 18, game: 'Overwatch 2', skillLevel: 'Beginner', matchType: 'Custom', region: 'Asia' },
     { id: 19, game: 'CS2', skillLevel: 'Beginner', matchType: 'Ranked', region: 'EU' },
     { id: 20, game: 'Valorant', skillLevel: 'Semi-Pro', matchType: 'Casual', region: 'NA' }
-  ];
+  ], []);
 
   const [filters, setFilters] = useState({
     game: [],
@@ -37,7 +37,7 @@ function SearchMatches() {
 
   useEffect(() => {
     setOriginalMatches(initialMatches);
-  }, []);
+  }, [initialMatches]);
 
   const handleCheckboxChange = (filterType, value) => {
     const updatedFilters = { ...filters };

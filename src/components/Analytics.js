@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import '../styles/Analytics.css';
 
 function Analytics() {
-  const [userName, setUserName] = useState('John Doe'); 
+  const [userName] = useState('John Doe'); 
   const [profilePicture, setProfilePicture] = useState('default_profile.jpg'); 
   const [statistics] = useState({
     kda: 2.3,
