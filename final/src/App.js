@@ -7,6 +7,7 @@ import Analytics from './components/Analytics';
 import SearchMatches from './components/SearchMatches';
 import CreateTournament from './components/CreateTournament';
 import FAQ from './components/FAQ';
+import './i18n';
 
 function App() {
   return (
