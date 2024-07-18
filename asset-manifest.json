@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/elite-match-project/static/css/main.5d4b7929.css",
-    "main.js": "/elite-match-project/static/js/main.9688af12.js",
+    "main.css": "/elite-match-project/static/css/main.e5c5a287.css",
+    "main.js": "/elite-match-project/static/js/main.d00a37c4.js",
     "static/js/453.10429b57.chunk.js": "/elite-match-project/static/js/453.10429b57.chunk.js",
     "static/media/vallogo.svg": "/elite-match-project/static/media/vallogo.c71ae78e316abb579143b452ca7c502a.svg",
     "static/media/cs2logo.svg": "/elite-match-project/static/media/cs2logo.4f7ee4196ebd26f1ce08fe839eed6f1b.svg",
     "static/media/ow2logo.svg": "/elite-match-project/static/media/ow2logo.a1e3613e63c4a7a73133ca324b616d36.svg",
     "static/media/lollogo.svg": "/elite-match-project/static/media/lollogo.e4c3efa1820e31f720a0bedb9758f9db.svg",
     "index.html": "/elite-match-project/index.html",
-    "main.5d4b7929.css.map": "/elite-match-project/static/css/main.5d4b7929.css.map",
-    "main.9688af12.js.map": "/elite-match-project/static/js/main.9688af12.js.map",
+    "main.e5c5a287.css.map": "/elite-match-project/static/css/main.e5c5a287.css.map",
+    "main.d00a37c4.js.map": "/elite-match-project/static/js/main.d00a37c4.js.map",
     "453.10429b57.chunk.js.map": "/elite-match-project/static/js/453.10429b57.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.5d4b7929.css",
-    "static/js/main.9688af12.js"
+    "static/css/main.e5c5a287.css",
+    "static/js/main.d00a37c4.js"
   ]
 }
